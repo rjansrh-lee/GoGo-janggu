@@ -19,6 +19,22 @@
 | `preview-mobile.png` · `preview-desktop.png` | 로컬 파일 전체 화면 미리보기 (2026-11-21 최신판) |
 | `mobile-top.png` · `mobile-mid.png` · `mobile-contact.png` | 휴대폰 화면 크기(390×844) 미리보기 — 첫 화면 / 강습 카드 / 문의 카드 |
 | `render.py` | 미리보기 그림을 다시 만드는 스크립트 |
+| `robots.txt` | 검색 로봇 수집 허용 안내 + 사이트맵 위치 (검색 등록용) |
+| `sitemap.xml` | 검색엔진에 알려 줄 페이지 목록 (공개 주소 1개, `lastmod` 2026-11-22) |
+
+## 2026-11-22 검색 등록용 파일 추가
+
+- **`index.html` `<head>`에 검색·공유용 태그 추가** — 페이지 내용·스타일·확정된 시간표는 그대로 두고 메타 태그만 넣었습니다.
+  - `canonical` = `https://rjansrh-lee.github.io/GoGo-janggu/`, `robots` = `index, follow`
+  - Open Graph: `og:type`(website), `og:locale`(ko_KR), `og:site_name`, `og:title`, `og:description`,
+    `og:url`, `og:image`(`hero.jpg`, 1600×901), `og:image:width`/`og:image:height`, `og:image:alt`
+  - Twitter 카드: `summary_large_image` + `twitter:title`/`description`/`image`
+  - 구조화 데이터(JSON-LD) 1개 — `EducationalOrganization`(이름·주소·전화·지역·수상). 기존에 JSON-LD는 없었습니다.
+- **`robots.txt`** — 모든 검색 로봇 허용, 사이트맵 주소 안내.
+- **`sitemap.xml`** — 공개 주소 1개(`changefreq` weekly, `priority` 1.0). 내용이 바뀌면 `<lastmod>`를 그날 날짜로 고칩니다.
+- 확인: `grep -c 1945 index.html` → 0건 유지, JSON-LD `json.loads` 통과, `sitemap.xml` XML 파싱 통과.
+- 검색 등록: 네이버 서치어드바이저·구글 서치 콘솔에서 `https://rjansrh-lee.github.io/GoGo-janggu/sitemap.xml`을
+  사이트맵으로 제출하고 소유 확인을 하면 수집이 빨라집니다(소유 확인은 직접 로그인 필요).
 
 ## 2026-11-21 저녁 배포본 (커밋 `a18a33f`) — 개인 장구·채 지참 안내
 
@@ -85,7 +101,8 @@ cd /workspace/sites/gogo-janggu && python3 render.py
 
 ```bash
 cd /workspace/tmpdir/gogo_deploy            # 저장소 복제본
-cp /workspace/sites/gogo-janggu/index.html /workspace/sites/gogo-janggu/*.jpg /workspace/sites/gogo-janggu/performance.mp4 .
+cp /workspace/sites/gogo-janggu/index.html /workspace/sites/gogo-janggu/robots.txt /workspace/sites/gogo-janggu/sitemap.xml .
+cp /workspace/sites/gogo-janggu/*.jpg /workspace/sites/gogo-janggu/performance.mp4 .
 git add -A && git commit -m "..." && git push origin main
 gh api repos/rjansrh-lee/GoGo-janggu/pages/builds/latest --jq '.commit,.status'   # built 확인
 ```
