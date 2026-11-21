@@ -22,6 +22,13 @@
 | `robots.txt` | 검색 로봇 수집 허용 안내 + 사이트맵 위치 (검색 등록용) |
 | `sitemap.xml` | 검색엔진에 알려 줄 페이지 목록 (공개 주소 1개, `lastmod` 2026-11-22) |
 
+## 2026-11-22 구글 서치 콘솔 소유 확인 태그
+
+- **`index.html` `<head>`에 구글 소유 확인 태그 추가** — `robots`·`canonical` 바로 옆에 넣었습니다. 페이지 내용·스타일은 그대로입니다.
+  `<meta name="google-site-verification" content="UFighGm5P3bdWKKVAkvUtip8eMCYNG3AZTnpkNYDaQM">`
+- 구글 서치 콘솔에서 `https://rjansrh-lee.github.io/GoGo-janggu/` 를 "URL 접두어" 방식으로 소유 확인할 때 쓰는 값입니다.
+  태그를 지우거나 content 값을 바꾸면 소유 확인이 해제될 수 있으니 그대로 두세요.
+
 ## 2026-11-22 검색 등록용 파일 추가
 
 - **`index.html` `<head>`에 검색·공유용 태그 추가** — 페이지 내용·스타일·확정된 시간표는 그대로 두고 메타 태그만 넣었습니다.
