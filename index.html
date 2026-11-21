@@ -181,6 +181,24 @@ h2 .accent{color:var(--red)}
   position:absolute;top:12px;right:12px;background:#fff;border:1px solid #f0d3a5;
   border-radius:999px;padding:3px 10px;font-size:11.5px;color:#a07a44;font-weight:700;letter-spacing:0;
 }
+.portrait.has-photo{
+  display:block;width:100%;padding:0;border:1px solid #e6cba4;background:#241a13;
+  box-shadow:0 18px 40px -22px rgba(90,45,15,.5);
+}
+.portrait.has-photo img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 15%;
+}
+.portrait.has-photo::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(24,14,9,0) 54%,rgba(24,14,9,.72) 100%);
+}
+.portrait.has-photo .cap{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:16px 18px 18px;color:#fff6e9;
+  font-size:1.02rem;font-weight:800;line-height:1.5;letter-spacing:-0.01em;
+  text-shadow:0 2px 10px rgba(0,0,0,.9);word-break:keep-all;
+}
 .about-body p{font-size:1.06rem;word-break:keep-all}
 .about-body p + p{margin-top:14px}
 .about-body strong{color:var(--red-deep);font-weight:800}
@@ -336,6 +354,35 @@ h2 .accent{color:var(--red)}
   background:rgba(20,12,8,.72);border:1px solid rgba(248,205,121,.4);color:#ffe2b0;
   border-radius:999px;padding:3px 10px;font-size:11.5px;font-weight:700;letter-spacing:0;
 }
+/* 세로 포스터 카드 — 글자가 잘리지 않도록 contain + 크림색 여백 */
+.shot.poster{
+  background:#f6ebd8;padding:0;justify-content:flex-start;
+  border-color:rgba(248,205,121,.34);
+}
+.shot.poster::after{content:none}
+.shot.poster .zoom{position:relative;flex:1 1 auto;min-height:0;display:block;width:100%}
+.shot.poster .zoom img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.shot.poster .zoomtag{
+  position:absolute;top:10px;right:10px;z-index:2;display:inline-flex;align-items:center;gap:5px;
+  background:rgba(24,15,10,.78);border:1px solid rgba(248,205,121,.42);color:#ffe6bd;
+  border-radius:999px;padding:3px 10px;font-size:11.5px;font-weight:700;letter-spacing:0;
+}
+.shot.poster .zoomtag svg{width:12px;height:12px}
+.shot.poster .cap{
+  flex:none;position:static;background:rgba(24,15,10,.94);
+  padding:11px 14px 12px;text-shadow:none;
+}
+.shot.poster .cap span{color:#e8d3ba}
+/* 공연 현장 영상 */
+.video-card{
+  margin-top:clamp(18px,2.6vw,26px);scroll-margin-top:118px;
+  background:rgba(255,247,237,.06);border:1px solid rgba(248,205,121,.24);
+  border-radius:22px;padding:clamp(16px,2.4vw,24px);
+}
+.video-card h3{font-size:clamp(1.1rem,2.4vw,1.26rem);font-weight:900;letter-spacing:-0.02em;color:#fff}
+.video-card p{font-size:.98rem;color:#e3cfba;margin-top:5px;word-break:keep-all}
+.video-card video{display:block;margin-top:14px;width:100%;max-height:520px;border-radius:14px;background:#1a100c}
+.video-card .none{font-size:.95rem;color:#ffe3b6}
 .gig{
   margin-top:clamp(20px,3vw,28px);
   background:rgba(255,247,237,.06);border:1px solid rgba(248,205,121,.24);
@@ -436,9 +483,19 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
 .totop svg{width:22px;height:22px}
 
 /* ================= responsive ================= */
+@media (min-width:821px){
+  /* 실제 공연 사진 위에서도 흰 제목이 또렷하게 읽히도록 왼쪽에 은은한 명암을 더한다 */
+  .hero::after{
+    background:
+      linear-gradient(100deg,rgba(24,15,10,.55) 0%,rgba(24,15,10,.28) 46%,rgba(24,15,10,0) 76%),
+      linear-gradient(180deg,rgba(26,17,11,.5) 0%,rgba(26,17,11,.08) 30%,rgba(26,17,11,.55) 66%,rgba(26,17,11,.93) 100%),
+      radial-gradient(120% 80% at 12% 100%,rgba(20,12,8,.75) 0%,transparent 62%);
+  }
+}
 @media (max-width:980px){
   .about-grid{grid-template-columns:1fr;gap:26px}
   .portrait{max-width:400px;aspect-ratio:4/3.2;margin-inline:auto}
+  .portrait.has-photo{aspect-ratio:4/5}
   .contact-grid{grid-template-columns:1fr}
   .gig{grid-template-columns:1fr;gap:18px}
   .gallery{grid-template-columns:1fr 1fr}
@@ -518,7 +575,7 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
 
   <!-- ================= HERO ================= -->
   <section class="hero" aria-labelledby="hero-title">
-    <img class="hero-bg" src="hero.jpg" width="1400" height="933" alt="따뜻한 조명 아래 무대에 나란히 놓인 붉고 푸른 장구들과, 뒤편에서 박수 치는 고고장구 공연팀" fetchpriority="high">
+    <img class="hero-bg" src="hero.jpg" width="1600" height="901" alt="야외 특설무대에서 붉은 장구를 두드리며 단체 고고장구를 연주하는 양서 고고장구팀" fetchpriority="high">
     <div class="wrap hero-inner">
       <span class="eyebrow"><i aria-hidden="true"></i>경기도 양평군 양서면 · 고고장구</span>
       <h1 id="hero-title">정복실과 <span class="go">Go! Go!</span> 장구</h1>
@@ -538,9 +595,6 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
           수강 · 공연 문의
         </a>
       </div>
-      <p class="hero-note">
-        <span>무대 사진은 분위기를 전하는 예시 이미지입니다.</span>
-      </p>
     </div>
   </section>
 
@@ -570,13 +624,9 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
       </article>
 
       <div class="about-grid">
-        <figure class="portrait" aria-label="정복실 선생님 사진 자리">
-          <span class="ratio">4 : 5</span>
-          <span class="cam" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.6l1.3-2h7.2l1.3 2h1.6A2.5 2.5 0 0 1 21 8.5v9A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5Z"/><circle cx="12" cy="13" r="3.6"/></svg>
-          </span>
-          <b>정복실 선생님</b>
-          <span>사진 준비 중<br>곧 선생님의 사진을 올리겠습니다</span>
+        <figure class="portrait has-photo">
+          <img src="teacher.jpg" width="1000" height="1503" alt="무대에서 붉은 장구를 두드리며 환하게 웃고 있는 정복실 선생님">
+          <figcaption class="cap">정복실 선생님 · 현역 고고장구 강사</figcaption>
         </figure>
 
         <div class="about-body">
@@ -692,27 +742,35 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
 
       <div class="gallery">
         <figure class="shot has-photo">
-          <span class="tagx">예시 이미지</span>
-          <img src="stage.jpg" width="1400" height="933" alt="야외 축제 무대에서 고고장구를 연주하는 공연팀의 모습 (예시 이미지)">
-          <figcaption class="cap">공연 무대<span>분위기를 전하는 예시 이미지입니다</span></figcaption>
+          <img src="stage-yangseo-1.jpg" width="1400" height="788" alt="제30회 양서면민의 날 기념식 야외 특설무대에서 단체 고고장구를 연주하는 양서 고고장구팀">
+          <figcaption class="cap">제30회 양서면민의 날 기념식<span>2026.10.23 · 야외 특설무대 단체 고고장구</span></figcaption>
         </figure>
 
-        <div class="shot empty">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.6l1.3-2h7.2l1.3 2h1.6A2.5 2.5 0 0 1 21 8.5v9A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5Z"/><circle cx="12" cy="13" r="3.6"/></svg>
-          </span>
-          <span class="lbl">공연 사진 추가 예정</span>
-          <span class="hint">단체 사진과 무대 사진을 준비하고 있습니다</span>
-        </div>
+        <figure class="shot has-photo poster">
+          <a class="zoom" href="poster-semiwon.jpg" target="_blank" rel="noopener" aria-label="제14회 경기정원문화박람회 포스터를 원본 크기로 보기">
+            <img src="poster-semiwon.jpg" width="1200" height="1607" alt="제14회 2026 경기정원문화박람회 양서주민자치센터 초청 공연 포스터">
+            <span class="zoomtag" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7.5 7.5M3 21l7.5-7.5"/></svg>
+              크게
+            </span>
+          </a>
+          <figcaption class="cap">제14회 경기정원문화박람회<span>10.18 세미원 메인무대 · 양서주민자치센터 초청 공연</span></figcaption>
+        </figure>
 
-        <div class="shot empty">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.6l1.3-2h7.2l1.3 2h1.6A2.5 2.5 0 0 1 21 8.5v9A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5Z"/><circle cx="12" cy="13" r="3.6"/></svg>
-          </span>
-          <span class="lbl">공연 사진 추가 예정</span>
-          <span class="hint">관객과 함께한 사진도 준비하고 있습니다</span>
-        </div>
+        <figure class="shot has-photo">
+          <img src="stage-yangseo-2.jpg" width="1400" height="788" alt="라이브 반주에 맞춰 함께 장단을 맞추는 양서 고고장구팀의 무대">
+          <figcaption class="cap">신명 나는 합동 무대<span>라이브 반주와 함께 호흡을 맞춘 양서 고고장구팀</span></figcaption>
+        </figure>
       </div>
+
+      <figure id="performance-video" class="video-card">
+        <h3>공연 현장 영상</h3>
+        <p>현장에서 담은 신명 나는 고고장구 무대 (약 4분)</p>
+        <video controls playsinline preload="metadata" poster="stage-yangseo-2.jpg" style="width:100%; max-height:520px; border-radius:14px; background:#1a100c;">
+          <source src="performance.mp4" type="video/mp4">
+          브라우저에서 동영상을 재생할 수 없습니다. <a href="performance.mp4">영상 파일 바로 열기</a>
+        </video>
+      </figure>
 
       <div class="gig">
         <div>
@@ -756,14 +814,14 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
         </article>
 
         <article class="notice">
-          <span class="badge">연습</span>
-          <h3>연습 장단 영상</h3>
-          <p>수업에서 배운 장단을 집에서도 볼 수 있게 영상 링크를 준비하고 있습니다.</p>
+          <span class="badge">영상</span>
+          <h3>연습 장단 · 공연 영상</h3>
+          <p>수업에서 배운 장단은 연습 영상으로 준비하고 있습니다. 무대의 신명은 공연 현장 영상에서 바로 보실 수 있습니다.</p>
           <div class="nb">
-            <button class="btn-sm" type="button" aria-disabled="true" title="영상 링크가 준비되면 연결됩니다">
+            <a class="btn-sm" href="#performance-video">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M8 6.5v11l9-5.5z"/></svg>
-              영상 보기 (준비 중)
-            </button>
+              공연 영상 보러 가기
+            </a>
           </div>
         </article>
       </div>
