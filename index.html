@@ -502,6 +502,141 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
 .totop.show{opacity:1;transform:none;pointer-events:auto}
 .totop svg{width:22px;height:22px}
 
+/* ================= 대표 노래 ================= */
+.song{background:linear-gradient(180deg,#fff8ee 0%,#fff2dd 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.song-panel{
+  margin-top:clamp(28px,4vw,42px);
+  display:grid;grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);gap:clamp(22px,3.4vw,40px);align-items:center;
+  background:var(--paper);border:1px solid #f0dcc0;border-radius:30px;
+  padding:clamp(16px,2.4vw,26px);box-shadow:var(--shadow-md);
+}
+.song .yt-media{aspect-ratio:1/1;border-radius:22px}
+.song-body{padding:clamp(4px,1vw,10px) clamp(2px,1vw,12px) clamp(4px,1vw,10px) 0}
+.song-badge{
+  display:inline-block;padding:5px 13px;border-radius:999px;
+  background:#ffe9c8;border:1px solid #f1cf9a;color:#95550c;
+  font-size:13px;font-weight:800;letter-spacing:.02em;
+}
+.song-body h3{
+  margin-top:12px;font-family:var(--font-display);
+  font-size:clamp(1.35rem,3.2vw,1.72rem);line-height:1.4;letter-spacing:.02em;color:var(--ink);
+}
+.song-body > p{font-size:1.02rem;color:var(--ink-soft);line-height:1.78;margin-top:10px;word-break:keep-all}
+.song-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.song-fact{
+  display:inline-flex;align-items:center;gap:7px;
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:7px 14px;font-size:14.5px;font-weight:700;color:var(--ink-soft);
+}
+.song-fact i{width:7px;height:7px;border-radius:50%;background:var(--ochre);flex:none}
+.song-note{
+  display:flex;gap:10px;align-items:flex-start;margin-top:18px;
+  background:#fff6e6;border:1px solid #f3ddb8;border-left:4px solid var(--red);
+  border-radius:14px;padding:13px 16px;
+  font-size:.98rem;line-height:1.65;color:#7b4a26;
+}
+.song-note svg{width:20px;height:20px;flex:none;color:var(--red);margin-top:3px}
+.song-note b{color:var(--red-deep);font-weight:800}
+
+/* ================= 유튜브 카드 ================= */
+.yt-media{position:relative;overflow:hidden;border-radius:18px;background:#211711;aspect-ratio:16/9;border:1px solid rgba(248,205,121,.22)}
+.yt-face{display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.yt-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.yt-face::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(24,14,9,0) 46%,rgba(24,14,9,.46) 100%);
+}
+.yt-face:hover img,.yt-face:focus-visible img{transform:scale(1.03)}
+.yt-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+  width:clamp(58px,8vw,72px);height:clamp(58px,8vw,72px);border-radius:50%;
+  display:grid;place-items:center;background:rgba(207,58,36,.95);color:#fff;
+  box-shadow:0 12px 28px -10px rgba(0,0,0,.8),0 0 0 6px rgba(255,255,255,.22);
+  transition:transform .18s ease,background .18s ease;
+}
+.yt-face:hover .yt-play,.yt-face:focus-visible .yt-play{transform:translate(-50%,-50%) scale(1.06);background:var(--red-deep)}
+.yt-play svg{width:40%;height:40%;margin-left:7%}
+.yt-time{
+  position:absolute;right:10px;bottom:10px;z-index:2;
+  background:rgba(20,12,8,.84);border:1px solid rgba(248,205,121,.32);color:#ffe9c6;
+  border-radius:8px;padding:2px 9px;font-size:13px;font-weight:800;letter-spacing:.02em;
+  font-variant-numeric:tabular-nums;
+}
+.yt-frame{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-link{
+  display:inline-flex;align-items:center;gap:5px;align-self:flex-start;min-height:36px;
+  margin-top:10px;padding-bottom:1px;font-size:13.5px;font-weight:800;
+  color:#ffe0a8;border-bottom:1px solid rgba(248,205,121,.45);
+}
+.yt-link:hover{color:#fff;border-color:var(--gold)}
+.song .yt-link{color:var(--red-deep);border-color:rgba(207,58,36,.35);margin-top:20px;font-size:.96rem}
+.song .yt-link:hover{color:var(--red);border-color:var(--red)}
+.yt-block{margin-top:clamp(26px,3.6vw,38px);scroll-margin-top:118px}
+.yt-head h3{font-size:clamp(1.14rem,2.5vw,1.34rem);font-weight:900;letter-spacing:-0.02em;color:#fff}
+.yt-head p{font-size:.98rem;color:#e3cfba;margin-top:5px;word-break:keep-all}
+.yt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,20px);margin-top:clamp(18px,2.4vw,24px)}
+.yt-card{
+  display:flex;flex-direction:column;
+  background:rgba(255,247,237,.06);border:1px solid rgba(248,205,121,.24);
+  border-radius:20px;padding:12px 12px 16px;
+}
+.yt-body{padding:12px 5px 0}
+.yt-date{font-size:13px;font-weight:800;color:var(--gold);letter-spacing:.01em;line-height:1.5}
+.yt-card h4{font-size:clamp(1.04rem,2.2vw,1.16rem);font-weight:900;color:#fff;line-height:1.45;margin-top:4px;letter-spacing:-0.01em;word-break:keep-all}
+.yt-meta{font-size:13px;color:#dcc6ae;margin-top:4px;line-height:1.6;word-break:keep-all}
+.yt-more{
+  align-items:center;justify-content:center;text-align:center;gap:7px;
+  border-style:dashed;border-color:rgba(248,205,121,.34);background:rgba(255,247,237,.03);
+  padding:clamp(22px,3vw,30px) 18px;
+}
+.yt-more:hover{border-color:rgba(248,205,121,.62);background:rgba(255,247,237,.08)}
+.yt-more-ico{
+  width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(207,58,36,.2);border:1px solid rgba(248,205,121,.32);color:#ffc7b6;
+}
+.yt-more-ico svg{width:23px;height:23px}
+.yt-more b{font-size:1.04rem;font-weight:900;color:#fff;letter-spacing:-0.01em;margin-top:2px}
+.yt-more span{font-size:13px;color:#d9c3ab;line-height:1.65;max-width:26ch}
+.yt-more .yt-more-go{margin-top:6px;font-weight:800;color:#ffe0a8;border-bottom:1px solid rgba(248,205,121,.45);padding-bottom:1px}
+
+/* ================= 언론 보도 ================= */
+.press{background:#fffaf1;border-top:1px solid var(--line)}
+.press-list{display:grid;gap:clamp(14px,2vw,18px);margin-top:clamp(26px,3.6vw,38px)}
+.press-item{
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,2.4vw,26px);align-items:start;
+  background:var(--paper);border:1px solid var(--line);border-radius:22px;
+  padding:clamp(18px,2.6vw,26px);box-shadow:var(--shadow-sm);
+}
+.press-date{
+  display:flex;flex-direction:column;align-items:center;gap:4px;min-width:108px;
+  padding:11px 10px;border-radius:16px;
+  background:#fff2da;border:1px solid #f2d9ae;
+}
+.press-date b{font-family:var(--font-display);font-size:1.02rem;color:var(--red-deep);letter-spacing:.02em;white-space:nowrap}
+.press-date span{font-size:12.5px;color:#96703a;text-align:center;line-height:1.45}
+.press-outlet{
+  display:inline-block;padding:3px 11px;border-radius:999px;
+  background:#e8f0f7;border:1px solid #c6dced;color:#215b86;
+  font-size:12.5px;font-weight:800;letter-spacing:.02em;
+}
+.press-body h3{
+  margin-top:9px;font-size:clamp(1.06rem,2.4vw,1.24rem);font-weight:900;
+  line-height:1.5;letter-spacing:-0.01em;word-break:keep-all;
+}
+.press-prize{
+  display:inline-block;margin-left:4px;padding:0 9px;border-radius:8px;
+  background:var(--red);color:#fff;font-size:.82em;line-height:1.7;white-space:nowrap;vertical-align:1px;
+}
+.press-body p{font-size:.98rem;color:var(--ink-soft);line-height:1.72;margin-top:7px;word-break:keep-all}
+.press-body p b{color:var(--red-deep);font-weight:800}
+.press-meta{font-size:.86rem !important;color:var(--ink-mute) !important;margin-top:9px !important}
+.press-link{
+  display:inline-flex;align-items:center;gap:6px;margin-top:12px;min-height:36px;
+  font-size:.95rem;font-weight:800;color:var(--red-deep);
+  border-bottom:2px solid rgba(207,58,36,.35);padding-bottom:1px;
+}
+.press-link:hover{border-color:var(--red);color:var(--red)}
+
 /* ================= responsive ================= */
 @media (min-width:821px){
   /* 실제 공연 사진 위에서도 흰 제목이 또렷하게 읽히도록 왼쪽에 은은한 명암을 더한다 */
@@ -512,8 +647,17 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
       radial-gradient(120% 80% at 12% 100%,rgba(20,12,8,.75) 0%,transparent 62%);
   }
 }
+@media (min-width:821px) and (max-width:1040px){
+  .nav a{padding:0 12px;font-size:15.5px}
+}
 @media (max-width:980px){
   .about-grid{grid-template-columns:1fr;gap:26px}
+  .song-panel{grid-template-columns:1fr;gap:20px}
+  .song-body{padding:2px 4px 4px}
+  .yt-grid{grid-template-columns:1fr 1fr}
+  .press-item{grid-template-columns:1fr}
+  .press-date{flex-direction:row;align-items:baseline;gap:8px;min-width:0;padding:9px 14px;align-self:flex-start;justify-self:start}
+  .press-date span{text-align:left}
   .portrait{max-width:400px;aspect-ratio:4/3.2;margin-inline:auto}
   .portrait.has-photo{aspect-ratio:4/5}
   .contact-grid{grid-template-columns:1fr}
@@ -535,6 +679,7 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
   .nav::-webkit-scrollbar{display:none}
   .nav a{min-height:44px;padding:0 13px;font-size:15.8px;flex:none;letter-spacing:-0.02em}
   .nav a.nav-cta{display:none}
+  .nav a.nav-extra{display:none}
   .nav{justify-content:space-between}
   section{scroll-margin-top:106px}
   .hero-inner{min-height:clamp(430px,72vh,600px)}
@@ -547,6 +692,7 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn{width:100%}
   .gallery{grid-template-columns:1fr}
+  .yt-grid{grid-template-columns:1fr}
   .shot{aspect-ratio:16/10}
   .info div{grid-template-columns:70px 1fr}
   .totop{width:50px;height:50px;right:12px;bottom:14px}
@@ -612,9 +758,11 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
     </a>
     <nav class="nav" aria-label="주요 메뉴">
       <a href="#about">소개</a>
-      <a href="#class">강습안내</a>
-      <a href="#stage">공연·사진</a>
-      <a href="#notice">공지·문의</a>
+      <a href="#song">노래</a>
+      <a href="#class">강습</a>
+      <a href="#stage">공연·영상</a>
+      <a href="#press">보도</a>
+      <a class="nav-extra" href="#notice">공지</a>
       <a class="nav-cta" href="#contact">문의하기</a>
     </nav>
   </div>
@@ -725,6 +873,48 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
     </div>
   </section>
 
+  <!-- ================= 대표 노래 ================= -->
+  <section class="section song" id="song" aria-labelledby="song-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">대표 노래</span>
+        <h2 id="song-title">「양수리 <span class="accent">복실이할머니</span>」</h2>
+        <p class="lede">장구를 치며 살아온 정복실 선생님을 위해 만든 노래. 2025년 음원으로 발매되어 지금 유튜브에서 들으실 수 있습니다.</p>
+      </div>
+
+      <div class="song-panel">
+        <div class="yt-media" data-yt="9Y6Hcxy6iSg">
+          <button class="yt-face" type="button" data-id="9Y6Hcxy6iSg" data-title="양수리 복실이할머니 · FactSong 이은우" aria-label="「양수리 복실이할머니」 노래 영상 재생 (4분 6초)">
+            <img src="yt-9Y6Hcxy6iSg.jpg" width="720" height="720" alt="붉은 장구를 앞에 두고 노래하는 정복실 선생님 — 「양수리 복실이할머니」 영상 화면" loading="lazy" decoding="async">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6a1 1 0 0 0 1.52.85l11-6.8a1 1 0 0 0 0-1.7l-11-6.8A1 1 0 0 0 8 5.2Z"/></svg></span>
+            <span class="yt-time" aria-hidden="true">4:06</span>
+          </button>
+        </div>
+
+        <div class="song-body">
+          <span class="song-badge">2025년 발매 음원</span>
+          <h3>어머니를 위한 노래</h3>
+          <p>
+            정복실 선생님께 바치는 노래 「양수리 복실이할머니」입니다. 2025년 FactSong을 통해 음원으로 발매되었습니다.
+            영상의 재생 버튼을 누르면 이 자리에서 바로 들으실 수 있습니다.
+          </p>
+          <div class="song-facts">
+            <span class="song-fact"><i aria-hidden="true"></i>FactSong · 이은우</span>
+            <span class="song-fact"><i aria-hidden="true"></i>4분 6초</span>
+            <span class="song-fact"><i aria-hidden="true"></i>2025년 발매</span>
+          </div>
+          <p class="song-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6.5l10-2v11.5"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>
+            <span>어머니를 위한 노래 · 유튜브에서 <b>‘양수리 복실이’</b>로 들을 수 있어요</span>
+          </p>
+          <a class="yt-link" href="https://www.youtube.com/watch?v=9Y6Hcxy6iSg" target="_blank" rel="noopener">
+            유튜브에서 크게 보기 <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= 강습 안내 ================= -->
   <section class="section classes" id="class" aria-labelledby="class-title">
     <div class="wrap">
@@ -821,6 +1011,102 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
         </video>
       </figure>
 
+      <div class="yt-block" id="yt-archive">
+        <div class="yt-head">
+          <h3>유튜브 공연 영상</h3>
+          <p>지난 무대를 영상으로 모았습니다. 카드를 누르면 이 자리에서 바로 재생됩니다.</p>
+        </div>
+
+        <div class="yt-grid">
+          <article class="yt-card">
+            <div class="yt-media" data-yt="RrOKpGMw9qg">
+              <button class="yt-face" type="button" data-id="RrOKpGMw9qg" data-title="카사노바 · 2023.11.11 두물머리 야외행사장" aria-label="카사노바 공연 영상 재생 (3분 4초)">
+                <img src="yt-RrOKpGMw9qg.jpg" width="768" height="432" alt="두물머리 야외행사장 무대에서 고고장구팀이 장구를 치며 노래하는 모습" loading="lazy" decoding="async">
+                <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6a1 1 0 0 0 1.52.85l11-6.8a1 1 0 0 0 0-1.7l-11-6.8A1 1 0 0 0 8 5.2Z"/></svg></span>
+                <span class="yt-time" aria-hidden="true">3:04</span>
+              </button>
+            </div>
+            <div class="yt-body">
+              <p class="yt-date">2023.11.11 · 두물머리 야외행사장</p>
+              <h4>카사노바</h4>
+              <p class="yt-meta">불우이웃돕기 버스킹문화축제 · 3:04</p>
+              <a class="yt-link" href="https://www.youtube.com/watch?v=RrOKpGMw9qg" target="_blank" rel="noopener">유튜브에서 크게 보기 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="yt-card">
+            <div class="yt-media" data-yt="bhfuhLO7St8">
+              <button class="yt-face" type="button" data-id="bhfuhLO7St8" data-title="찔레꽃 · 2023.11.11 두물머리 야외행사장" aria-label="찔레꽃 공연 영상 재생 (2분 40초)">
+                <img src="yt-bhfuhLO7St8.jpg" width="768" height="432" alt="두물머리 야외행사장 무대에서 찔레꽃을 부르는 고고장구팀" loading="lazy" decoding="async">
+                <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6a1 1 0 0 0 1.52.85l11-6.8a1 1 0 0 0 0-1.7l-11-6.8A1 1 0 0 0 8 5.2Z"/></svg></span>
+                <span class="yt-time" aria-hidden="true">2:40</span>
+              </button>
+            </div>
+            <div class="yt-body">
+              <p class="yt-date">2023.11.11 · 두물머리 야외행사장</p>
+              <h4>찔레꽃</h4>
+              <p class="yt-meta">불우이웃돕기 버스킹문화축제 · 2:40</p>
+              <a class="yt-link" href="https://www.youtube.com/watch?v=bhfuhLO7St8" target="_blank" rel="noopener">유튜브에서 크게 보기 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="yt-card">
+            <div class="yt-media" data-yt="_nOtnkOwCb8">
+              <button class="yt-face" type="button" data-id="_nOtnkOwCb8" data-title="고고장구 무대 · 2023.10.14 양서문화체육공원" aria-label="고고장구 무대 영상 재생 (3분 50초)">
+                <img src="yt-_nOtnkOwCb8.jpg" width="768" height="432" alt="양서문화체육공원 무대에서 단체 고고장구를 연주하는 모습" loading="lazy" decoding="async">
+                <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6a1 1 0 0 0 1.52.85l11-6.8a1 1 0 0 0 0-1.7l-11-6.8A1 1 0 0 0 8 5.2Z"/></svg></span>
+                <span class="yt-time" aria-hidden="true">3:50</span>
+              </button>
+            </div>
+            <div class="yt-body">
+              <p class="yt-date">2023.10.14 · 양서문화체육공원</p>
+              <h4>고고장구 무대</h4>
+              <p class="yt-meta">제1회 양평문화원 양서분원 행복나눔한마당 · 3:50</p>
+              <a class="yt-link" href="https://www.youtube.com/watch?v=_nOtnkOwCb8" target="_blank" rel="noopener">유튜브에서 크게 보기 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="yt-card">
+            <div class="yt-media" data-yt="1LzHxRzB1OE">
+              <button class="yt-face" type="button" data-id="1LzHxRzB1OE" data-title="양수리전통시장 공연 · 2022.10.22" aria-label="양수리전통시장 공연 영상 재생 (3분 4초)">
+                <img src="yt-1LzHxRzB1OE.jpg" width="768" height="432" alt="양수리전통시장 연꽃아트마켓 힐링콘서트 무대" loading="lazy" decoding="async">
+                <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6a1 1 0 0 0 1.52.85l11-6.8a1 1 0 0 0 0-1.7l-11-6.8A1 1 0 0 0 8 5.2Z"/></svg></span>
+                <span class="yt-time" aria-hidden="true">3:04</span>
+              </button>
+            </div>
+            <div class="yt-body">
+              <p class="yt-date">2022.10.22 · 양수리전통시장</p>
+              <h4>양수리전통시장 공연</h4>
+              <p class="yt-meta">연꽃아트마켓 힐링콘서트 · 3:04</p>
+              <a class="yt-link" href="https://www.youtube.com/watch?v=1LzHxRzB1OE" target="_blank" rel="noopener">유튜브에서 크게 보기 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="yt-card">
+            <div class="yt-media" data-yt="7PqE5Saj7Rc">
+              <button class="yt-face" type="button" data-id="7PqE5Saj7Rc" data-title="고고장구 발표회 · 2019.12 양서면 주민자치센터 종강발표회" aria-label="고고장구 발표회 영상 재생 (3분 3초)">
+                <img src="yt-7PqE5Saj7Rc.jpg" width="768" height="432" alt="양서면 주민자치센터 종강발표회 고고장구 무대 — 양평군 공식 양평톡톡 영상" loading="lazy" decoding="async">
+                <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6a1 1 0 0 0 1.52.85l11-6.8a1 1 0 0 0 0-1.7l-11-6.8A1 1 0 0 0 8 5.2Z"/></svg></span>
+                <span class="yt-time" aria-hidden="true">3:03</span>
+              </button>
+            </div>
+            <div class="yt-body">
+              <p class="yt-date">2019.12 · 양서면 주민자치센터</p>
+              <h4>고고장구 발표회</h4>
+              <p class="yt-meta">종강발표회 · 양평군 공식 ‘양평톡톡’ · 3:03</p>
+              <a class="yt-link" href="https://www.youtube.com/watch?v=7PqE5Saj7Rc" target="_blank" rel="noopener">유튜브에서 크게 보기 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <a class="yt-card yt-more" href="https://www.youtube.com/results?search_query=%EA%B3%A0%EA%B3%A0%EC%9E%A5%EA%B5%AC+%EC%A0%95%EB%B3%B5%EC%8B%A4" target="_blank" rel="noopener">
+            <span class="yt-more-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg></span>
+            <b>유튜브에서 더 보기</b>
+            <span>‘고고장구 정복실’로 검색하면 더 많은 영상이 나옵니다</span>
+            <span class="yt-more-go">유튜브 열기 ↗</span>
+          </a>
+        </div>
+      </div>
+
       <div class="gig">
         <div>
           <h3>공연 섭외 문의</h3>
@@ -836,6 +1122,41 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15.5v3a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-3 18.6 18.6 0 0 1-5.7-5.7 19 19 0 0 1-3-8.4A2 2 0 0 1 3.8 3h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 10.5a15 15 0 0 0 5.5 5.5l.9-1a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
           공연 문의하기
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 언론 보도 ================= -->
+  <section class="section press" id="press" aria-labelledby="press-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">언론 보도</span>
+        <h2 id="press-title">지역 신문에 실린 <span class="accent">무대 소식</span></h2>
+        <p class="lede">경연대회 수상부터 이웃을 위한 공연까지, 지역 신문에 보도된 소식을 모았습니다.</p>
+      </div>
+
+      <div class="press-list">
+        <article class="press-item">
+          <div class="press-date"><b>2026.11.07</b><span>양평도서관 물빛극장</span></div>
+          <div class="press-body">
+            <span class="press-outlet">위키트리</span>
+            <h3>2026년 양평군 주민자치센터 문화프로그램 경연대회 <span class="press-prize">우수상</span></h3>
+            <p>양서면 <b>‘복실언니와 신바람 고고장구’</b> 팀이 12개 읍·면 동아리가 함께한 무대에서 우수상을 받았습니다.</p>
+            <p class="press-meta">보도 2026.11.09 · ‘빛나는 우리, 모여 락(樂), 즐겨 락(樂)’</p>
+            <a class="press-link" href="https://www.wikitree.co.kr/articles/1173025" target="_blank" rel="noopener">기사 보기 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+
+        <article class="press-item">
+          <div class="press-date"><b>2025.06.17</b><span>서종면 노인회관</span></div>
+          <div class="press-body">
+            <span class="press-outlet">양평백운신문</span>
+            <h3>서종면 ‘아기사랑 후원바자회’ 공연</h3>
+            <p>출산 가정을 돕는 서종면 노인출산아기후원회의 바자회 무대에 <b>‘정복실 가수’</b>로 출연한 소식이 지역 신문에 실렸습니다.</p>
+            <p class="press-meta">보도 2025.06.11 · 서종면 노인회관 주차광장</p>
+            <a class="press-link" href="http://www.ypnews.kr/news/articleView.html?idxno=54150" target="_blank" rel="noopener">기사 보기 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -1007,6 +1328,22 @@ footer{background:var(--ink);color:#c9b6a4;padding:clamp(36px,5vw,52px) 0 40px;f
         btn.textContent = msg;
         clearTimeout(btn._t);
         btn._t = setTimeout(function(){ btn.innerHTML = btn.getAttribute('data-old'); }, 1800);
+      });
+    });
+
+    // 유튜브 카드: 누르면 같은 자리에서 재생 (썸네일로 먼저 빠르게 보여 주고, 누를 때만 영상을 불러옵니다)
+    document.querySelectorAll('.yt-face').forEach(function(face){
+      face.addEventListener('click', function(){
+        var id = face.getAttribute('data-id');
+        if (!id) return;
+        var frame = document.createElement('iframe');
+        frame.className = 'yt-frame';
+        frame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+        frame.title = face.getAttribute('data-title') || '유튜브 공연 영상';
+        frame.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        frame.setAttribute('allowfullscreen', '');
+        frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        face.parentNode.replaceChild(frame, face);
       });
     });
   })();
